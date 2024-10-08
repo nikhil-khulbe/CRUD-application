@@ -1,0 +1,62 @@
+{% extends "layout.html" %} 
+
+
+{% block title %}
+home
+{% endblock %} 
+
+
+
+{% block content%}
+<div class="mc">
+  <div class="FormContainer">
+    <h1>CRUD APPLICATION</h1>
+
+    <form method="POST" enctype="multipart/form-data">
+      
+      {% csrf_token %}
+      <label for="name_"></label>
+      <input type="text" placeholder="Name" id ="name_" name="name">
+      <label for="email_"></label>
+      <input type="email" placeholder="Email" name="email" id="email_">
+      <label for="age_"></label>
+      <input type="number" placeholder="Age" name="age" id="age_">
+      <label for="image_">Image:</label>
+      <input type="file" placeholder="Name" name="image" id ="image_">
+      <button type="submit" class="btn-primary" >Submit</button>
+
+    </form>
+  </div>
+</div>
+  <br/>
+  <div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">S.NO</th>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Age</th>
+          <th scope="col">Image</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for ind in index  %}
+        <tr>
+          
+          <th scope="row">{{ forloop.counter }}</th>
+          <td>{{ind.name}}</td>
+          <td>{{ind.email}}</td>
+          <td>{{ind.age}}</td>
+          <td><img src="/media/{{ind.image}}" style = "height:100px"alt=""></td>
+          <td><a href="/delete_index/{{ind.id}}" class="btn btn-danger">Delete</a>
+          <a href="/update_index/{{ind.id}}" class="btn btn-success">Update</a></td>
+          
+        </tr>
+        {% endfor %}
+        
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

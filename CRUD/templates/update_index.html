@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block title %}Update{% endblock %}
+{% block content %}
+<div class="mc">
+  <div class="FormContainer">
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <label for="name_">Name:</label>
+      <input type="text" placeholder="Name" id ="name_" name="name" value={{index.name}}>
+      <label for="email_">Email:</label>
+      <input type="email" placeholder="Email" name="email" id="email_" value={{index.email}}>
+      <label for="age_">Age:</label>
+      <input type="number" placeholder="Age" name="age" id="age_" value={{index.age}}>
+      <label for="image_">Image:</label>
+      <input type="file" placeholder="Name" name="image" id ="image_">
+      <button type="submit" class="btn-primary" >Submit</button>
+
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}
